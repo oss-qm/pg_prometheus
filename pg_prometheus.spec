@@ -25,24 +25,19 @@ PostgreSQL extension for Prometheus
 %setup -q -n pg_prometheus-%version
 
 %build
-pushd build
-cmake -DREGRESS_CHECKS=OFF ../
 %cmd_make
-popd
 
 %install
 %__rm -rf %buildroot
-pushd build
-
-%cmd_make install
+%cmd_make DESTDIR=%buildroot install
 
 %clean
 %__rm -rf %buildroot
 
 %files
 %defattr(-,root,root)
-%doc *.md NOTICE
-%license LICENSE LICENSE-APACHE
+%doc *.md
+%license LICENSE
 
 ### global changelog
 %changelog
