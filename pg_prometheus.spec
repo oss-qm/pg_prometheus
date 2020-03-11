@@ -37,6 +37,7 @@ PostgreSQL extension for Prometheus
 %defattr(-,root,root)
 %doc *.md
 %license LICENSE
+/*
 
 ### global changelog
 %changelog
