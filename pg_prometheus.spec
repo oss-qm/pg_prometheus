@@ -2,7 +2,6 @@
 %global pg_version_major	12
 
 %global cmd_pg_config		%_bindir/pg_config-%pg_version_major
-%global cmd_make		%__make -j4 DESTDIR="%buildroot"
 
 Summary:	PostgreSQL extension for Prometheus
 Name:		pg_prometheus
@@ -25,11 +24,11 @@ PostgreSQL extension for Prometheus
 %setup -q -n pg_prometheus-%version
 
 %build
-%cmd_make
+%__make %{?_smp_mflags}
 
 %install
 %__rm -rf %buildroot
-%cmd_make DESTDIR=%buildroot install
+%__make %{?_smp_mflags} DESTDIR=%buildroot install
 
 %clean
 %__rm -rf %buildroot
